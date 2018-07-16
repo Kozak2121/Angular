@@ -1,0 +1,24 @@
+<div class="flex-container">
+    <div class="header">
+        <h4>Import data</h4>
+    </div>
+    <div class="description">
+        <span>Immediately see and talk with your user base by importing your data into the Intercom platform.
+            <strong> do you want to import people from?</strong>
+        </span>
+    </div>
+    <div>
+        <div ng-repeat="type in $ctrl.importTypes" class="type-wrapper">
+            <div class="icon"><i ng-class="type.icon" aria-hidden="true"></i></div>
+            <div>
+                <div>
+                    <strong ng-bind="type.name"></strong>:
+                    <span ng-bind="type.description"></span>
+                </div>
+                <div class="pull-right">
+                    <button class="btn btn-primary" ng-click="type.action()">Open {{type.name}} import tool</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

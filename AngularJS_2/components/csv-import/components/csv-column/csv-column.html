@@ -1,0 +1,82 @@
+<div class="column-wraper" ng-click="$ctrl.toggleCollapse($event)">
+    <div class="two-columns animated-column">
+        <div class="primary-column">    
+            <div>
+                <h5>COLUMN
+                    <span ng-bind="$ctrl.index + 1"></span>
+                    <i ng-if="$ctrl.column.isMapped" class="fa fa-check-circle pull-rigth" aria-hidden="true"></i>
+                </h5>
+            </div>
+            <div class="decription">
+                <button class="btn btn-primary" ng-if="!$ctrl.column.isMapped && $ctrl.isCollapsed" type="button">Select this column</button>
+                <span class="selected" ng-if="$ctrl.column.isMapped">Mapped as 
+                    <span ng-bind="$ctrl.selectedAttribute.title"></span>
+                </span>
+                <span class="selected" ng-if="!$ctrl.column.isMapped && !$ctrl.isCollapsed">selected</span>
+            </div>
+            <div class="repeater">
+                <div ng-repeat="item in $ctrl.values | limitTo: 4 track by $index"
+                    ng-hide="$first"
+                    ng-bind="item | limitTo: 13"></div>
+            </div>
+            <div class="footer">
+                <span> ... + {{$ctrl.values.length - 3}} more</span>
+            </div>
+        </div>
+        <div class="secondary-column" ng-if="!$ctrl.isCollapsed">
+            <fieldset ng-disabled="$ctrl.required"> 
+                <div ng-show="$ctrl.selectedAttribute">
+                    <span ng-bind="$ctrl.selectedAttribute.title || $ctrl.selectedAttribute.name"></span>
+                    <button class="fa fa-pencil-square-o"
+                       aria-hidden="true"
+                       ng-click="$ctrl.resetAttribute()"></button>
+                </div>
+                <div ng-hide="$ctrl.selectedAttribute" uib-dropdown is-open="$ctrl.isOpen">
+                    <button class="btn dropdown-toggle" uib-dropdown-toggle>
+                        Select custom attribute
+                    </button>
+                    <div class="dropdown-menu" uib-dropdown-menu ng-click="$ctrl.isOpen = !$ctrl.isOpen">
+                        <button class="dropdown-item"
+                                uib-popover-template="$ctrl.popoverAttributeTemlate"
+                                popover-title="Create new attribute"
+                                popover-is-open="$ctrl.isNewAttrPopoverOpen"
+                                ng-click="$ctrl.startNewAttribute($event)">
+                            Create a new custom attribute</button>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item disabled">EXISTING CUSTOM ATTRIBUTES</a>
+                        <div class="dropdown-divider"></div>
+                        <perfect-scrollbar class="ps-heigth">
+                            <strong class="text-center" ng-hide="$ctrl.attributes.length">Loading...</strong>
+                            <a class="dropdown-item"
+                               ng-click="$ctrl.selectAttribute(attribute)"
+                               ng-repeat="attribute in $ctrl.attributes"
+                               ng-bind="attribute.name"></a>
+                        </perfect-scrollbar>
+                    </div>
+                </div>
+                <fieldset class="radio-group" ng-disabled="!$ctrl.isNewAttribute">
+                    <label ng-repeat="type in $ctrl.dataTypes">
+                        <input type="radio" class="m-r-sm" ng-model="$ctrl.selectedAttribute.type" ng-value="type.type">
+                        <span ng-bind="type.name"></span>
+                        <i class="fa fa-question-circle text-light m-l" tooltip-placement="top-right" uib-tooltip="{{type.tooltip}}"></i>
+                    </label>
+                </fieldset>
+            </fieldset>  
+            <div class="self-align">
+                <div class="actions">
+                    <div >
+                        <button class="btn btn-secondary" ng-click="$ctrl.submit()">
+                            Cancel
+                        </button>
+                        <button ng-hide="$ctrl.isNewAttribute" class="btn btn-primary" ng-click="$ctrl.submit($event, true)">
+                            Confirm
+                        </button>
+                        <button ng-show="$ctrl.isNewAttribute" class="btn btn-primary" ng-click="$ctrl.proccessNewAttribute()">
+                            Create
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

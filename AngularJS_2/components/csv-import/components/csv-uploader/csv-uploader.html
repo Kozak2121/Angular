@@ -1,0 +1,32 @@
+<div>
+    <div class="content">
+        <label class="radio-input" ng-repeat="type in $ctrl.types">
+            <input type="radio" ng-model="$ctrl.selectedType" ng-value="type.value">
+            <span ng-bind="type.value | capitalize"></span><br>
+            <span class="description" ng-bind="type.description"></span>
+        </label>
+    </div>
+    <div class="upload" drag-n-drop="$ctrl.onUpload({file})">
+        <div class="fa-tooltip">
+            <i class="fa fa-info-circle"
+               uib-tooltip="{{$ctrl.tooltip}}"
+               tooltip-append-to-body="true"></i>
+        </div>
+        <div class="uploader" ng-if="$ctrl.uploadSuccess">
+            <span ng-bind="$ctrl.csvFile.name"></span>
+            <u>
+                <a>
+                    <i ng-click="$ctrl.removeFile()">Remove file</i>
+                </a>
+            </u>
+        </div>
+        <div class="uploader" ng-if="!$ctrl.uploadSuccess">
+            <upload on-select="$ctrl.onUpload({file})">
+                <span class="button-plus">
+                    <i class="fa fa-plus-circle fa-2x"></i>
+                </span>
+            </upload>
+            <span>Drag & Drop .csv file</span>
+        </div>
+    </div>
+</div>

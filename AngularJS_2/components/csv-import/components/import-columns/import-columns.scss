@@ -1,0 +1,17 @@
+import-columns{
+    .header{
+        margin: 0 0 10px 10px;
+    }
+    .columns{
+        width: 100%;
+        max-height: 370px;
+        overflow: overlay;
+        color: #9A99AB;
+        padding: 0 40px;
+    }
+    .csv-column{
+        display: inline-block;
+        max-width: 200px;
+    }   
+
+}

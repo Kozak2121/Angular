@@ -1,0 +1,63 @@
+<slide-panel is-open="$ctrl.panels.tags" slide-content-selector="#csv-import-page">
+    <tag-search done="$ctrl.resolveTags({tags: tags})" existed="$ctrl.tags"></tag-search>
+</slide-panel>
+
+<div class="csv-wraper" id="csv-import-page">
+    <div class="header">
+        <strong>IMPORT</strong>
+    </div>
+    <div class="attributes">
+        
+    </div>
+    <div class="description">
+        <span ng-bind="$ctrl.csvImportSteps[$ctrl.step -1]"></span>
+        <div>Step 
+            <span ng-bind="$ctrl.step"></span> of 3
+        </div>
+    </div>
+    <div>
+        <csv-uploader ng-if="$ctrl.step === 1"
+                      done="$ctrl.resolveCsv({file})"
+                      selected-type="$ctrl.type">
+        </csv-uploader>
+        <import-columns ng-if="$ctrl.step === 2" columns="$ctrl.CSVImport.preview_columns" type="$ctrl.type">
+            <csv-column column="$parent.column"
+                        done="$ctrl.mapColumn({data})">
+            </csv-column>
+        </import-columns>
+        <div class="tag-users" ng-if="$ctrl.step === 3">
+            <div class="tags">
+                <div class="header">
+                    <span>Tags</span>
+                    <div class="fa-tooltip">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                </div>
+                <div class="tags-list">
+                    <div>
+                        <div>
+                            <i class="fa fa-info"></i>
+                            <span ng-bind="$ctrl.CSVImport.tag_name"></span>
+                        </div>
+                        <div ng-repeat="tag in $ctrl.tags track by $index">
+                            <i class="fa fa-info"></i>
+                            <span ng-bind="tag.name"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <a><u ng-click="$ctrl.panels.toggle('tags', true)">Add more tags</u></a>
+            </div>
+        </div> 
+    </div>
+    <div>
+        <div class="actions">
+            <button ng-show="$ctrl.step > 1" class="btn btn-secondary" ng-click="$ctrl.prev()">Previous</button>
+            <button class="btn btn-primary" ng-click="$ctrl.applyStep()">
+                <span ng-if="$ctrl.step !== 3">Next</span>
+                <span ng-if="$ctrl.step === 3">Finish</span>
+            </button>
+        </div>
+    </div>
+</div>

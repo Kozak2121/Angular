@@ -1,0 +1,13 @@
+<div>
+    <div class="header">
+        <span ng-bind="$ctrl.currentStep + 1"></span> of 
+        <span ng-bind="$ctrl.totalSteps"></span>
+        <span ng-bind="$ctrl.columnSteps[$ctrl.currentStep].question"></span><br>
+        <span ng-bind="$ctrl.columnSteps[$ctrl.currentStep].description"></span>
+    </div>
+    <div class="columns">
+        <div class="csv-column" ng-repeat="column in $ctrl.extendedColumns track by $index" 
+             ng-transclude="column" ng-click="$ctrl.nextStep(column)">
+        </div>
+    </div>
+</div>
