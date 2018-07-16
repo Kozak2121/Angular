@@ -1,0 +1,56 @@
+{
+  "options": {
+    "title": "Excluded items",
+    "checkboxes": false,
+    "highLightNew": false
+  },
+  "columns": [
+    {
+      "id": "rowPrimaryKey",
+      "hidden": true,
+      "converter": "composition",
+      "converterArgs": {
+        "entity_id": "entityId",
+        "entity_type": "entityType"
+      },
+      "primaryKey": true
+    }, {
+      "id": "entityId",
+      "hidden": true
+    }, {
+      "id": "entityType",
+      "hidden": true
+    }, {
+      "id": "mimeType",
+      "text": false,
+      "converter": "mimeIconConverter",
+      "dataStyle": {
+        "width": "30px"
+      },
+      "style": {
+        "width": "30px"
+      }
+    }, {
+      "id": "title",
+      "text": "Title",
+      "converter": "rowPendingLink",
+      "converterArgs": {
+        "typeColumnName": "entityType",
+        "idColumnName": "entityId"
+      }
+    }, {
+      "id": "excludeButton",
+      "text": false,
+      "converter": "clickEventConverter",
+      "converterArgs": {
+        "eventName": "remove-from-exclude",
+        "tooltip": "Include",
+        "attributes": {
+          "entityId": "entityId",
+          "entityType": "entityType"
+        },
+        "class": "fa fa-arrow-right blue-arrow-right cursor-pointer"
+      }
+    }
+  ]
+}

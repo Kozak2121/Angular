@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <button ng-if="!options.disableCloseX" type="button" class="close" ng-click="close()">×</button>
+    <h4>{{options.title || 'Select users'}}</h4>
+</div>
+<div class="modal-body inline-user-selector clearfix">
+    <div class="left-part">
+        <div widget-panel="leftPanel">
+            <widget-body>
+                <div ng-if="leftTableModel" class="avanan-table vertical-middle medium-icons" data-table="leftTableModel" options="leftTableOptions"></div>
+            </widget-body>
+        </div>
+    </div>
+    <div class="middle-part">
+        <button class="btn btn-blue" ng-click="addUsers()" ng-disabled="!canAdd()"><span class="fa fa-arrow-right"></span> Add</button><br />
+        <button class="btn btn-blue" ng-click="removeUsers()" ng-disabled="!canRemove()"><span class="fa fa-arrow-left"></span> Remove</button>
+
+    </div>
+    <div class="right-part">
+        <div widget-panel="rightPanel">
+            <widget-body>
+                <div ng-if="rightTableModel" class="avanan-table vertical-middle medium-icons" data-table="rightTableModel" options="rightTableOptions"></div>
+            </widget-body>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger btn-sm" ng-click="close()">{{options.closeText || 'Cancel'}}</button>
+    <button class="btn btn-success btn-sm" ng-click="ok()">{{options.okButton || 'Ok'}}</button>
+</div>

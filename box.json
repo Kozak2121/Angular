@@ -1,0 +1,376 @@
+{
+  "options": {
+    "autoUpdate": 60000,
+    "title": "Advanced data search",
+    "checkboxes": false,
+    "highLightNew": false,
+    "viewName" : "all",
+    "showMessageOnFail": true
+  },
+  "columns": [{
+    "id": "rowPrimaryKey",
+    "hidden": true,
+    "converter": "composition",
+    "converterArgs": {
+      "entity_id": "entity_id",
+      "entity_type": "entity_type"
+    },
+    "primaryKey": true
+  }, {
+    "id": "entity_type",
+    "hidden": true,
+    "text": "Entity Type",
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "entity_id",
+    "hidden": true,
+    "text": "Entity Id",
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "excludeButton",
+    "text": false,
+    "converter": "clickEventConverter",
+    "converterArgs": {
+      "eventName": "add-to-exclude",
+      "tooltip": "Exclude",
+      "attributes": {
+        "entityId": "entity_id",
+        "entityType": "entity_type",
+        "title": "title",
+        "mimeType": "mimeType"
+      },
+      "class": "fa fa-times blue-times cursor-pointer"
+    },
+    "alwaysVisible": true,
+    "export": {
+      "hidden": true
+    }
+  }, {
+    "id": "mimeType",
+    "text": false,
+    "converter": "mimeIconConverter",
+    "export": {
+      "hidden": true
+    },
+    "dataStyle": {
+      "width": "40px"
+    },
+    "style": {
+      "width": "40px"
+    },
+    "alwaysVisible": true
+  }, {
+    "id": "title",
+    "text": "Title",
+    "converter": "rowPendingLink",
+    "converterArgs": {
+      "typeColumnName": "entity_type",
+      "idColumnName": "entity_id"
+    },
+    "alwaysVisible": true
+  }, {
+    "id": "mimeType_export",
+    "text": "Type",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "size",
+    "text": "Size",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "link",
+    "text": "Link",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "description",
+    "text": "Description",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "path",
+    "hidden": true
+  }, {
+    "id": "path_names",
+    "text": "Path",
+    "converter": "boxPathConverter",
+    "dataClass": "near-click-icon",
+    "converterArgs": {
+      "idsColumn": "path",
+      "typeColumn": "entity_type",
+      "showExclude": true
+    }
+  }, {
+    "id": "owned_by_id",
+    "hidden": true
+  }, {
+    "id": "owner_name",
+    "text": "Owner",
+    "converter": "userWithEmail",
+    "converterArgs": {
+      "userIdColumn": "owned_by_id",
+      "emailColumn": "owner_login"
+    },
+    "alwaysVisible": true,
+    "export": {
+      "hidden": true
+    }
+  }, {
+    "id": "owner_name_export",
+    "hidden": true,
+    "text": "Owner Name",
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "owner_login",
+    "hidden": true,
+    "text": "Owner login",
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "created_by_id",
+    "hidden": true
+  }, {
+    "id": "creator_name",
+    "text": "Creator",
+    "converter": "userWithEmail",
+    "converterArgs": {
+      "userIdColumn": "created_by_id",
+      "emailColumn": "creator_login"
+    },
+    "export": {
+      "hidden": true
+    }
+  }, {
+    "id": "shared_by.entity_id",
+    "hidden": true
+  }, {
+    "id": "shared_by.login",
+    "text": "Shared By",
+    "converter": "listConverter",
+    "converterArgs": {
+      "ids": "shared_by.entity_id",
+      "type": "user",
+      "countPostfix": "users"
+    },
+    "export": {
+      "hidden": true
+    }
+  }, {
+    "id": "shared_with.entity_id",
+    "hidden": true
+  }, {
+    "id": "shared_with.login",
+    "text": "Shared With",
+    "converter": "listConverter",
+    "converterArgs": {
+      "ids": "shared_with.entity_id",
+      "type": "user",
+      "countPostfix": "users"
+    },
+    "export": {
+      "hidden": true
+    }
+  }, {
+    "id": "creator_name_export",
+    "hidden": true,
+    "text": "Creator Name",
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "creator_login",
+    "hidden": true,
+    "text": "Creator Login",
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "modified_by_name",
+    "hidden": true,
+    "text": "Modified By Name",
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "modified_by_login",
+    "hidden": true,
+    "text": "Modified By Login",
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "created_at",
+    "text": "Created Time",
+    "format": "time",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "content_created_at",
+    "text": "Content Created Time",
+    "format": "time",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "modified_at",
+    "text": "Modified Time",
+    "format": "time",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "link_expiration",
+    "text": "Link Expiration",
+    "format": "time",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "trashed_at",
+    "text": "Trashed Time",
+    "format": "time",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "update_time",
+    "text": "Update Time",
+    "format": "time",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "item_status",
+    "text": "Item Status",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "link_access_scope",
+    "text": "Link Access Scope",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "link_access_permissions",
+    "text": "Link Access Permissions",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "has_collaborations",
+    "text": "Has Collaborations",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }, {
+    "id": "is_shared_external",
+    "text": "Is Shared External",
+    "hidden": true,
+    "export": {
+      "visible": true
+    }
+  }],
+  "facetBlocks": [{
+      "id": "data_types",
+      "side": "from",
+      "title": "Data type",
+      "facetsOperator": false,
+      "defaultOperator": "OR"
+  }, {
+    "id": "from_ousers",
+    "side": "from",
+    "title": "Owner user",
+    "facetsOperator": false,
+    "defaultOperator": "OR",
+    "queryName": "users_search"
+  }, {
+    "id": "from_odomains",
+    "side": "from",
+    "title": "Owner domain",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "from_ogroups",
+    "side": "from",
+    "title": "Owner groups",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "from_cusers",
+    "side": "from",
+    "title": "Creator user",
+    "facetsOperator": false,
+    "defaultOperator": "OR",
+    "queryName": "users_search"
+  }, {
+    "id": "from_cdomains",
+    "side": "from",
+    "title": "Creator domain",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "from_cgroups",
+    "side": "from",
+    "title": "Creator groups",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "countries_access",
+    "side": "to",
+    "title": "Countries access",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "last_access_time",
+    "side": "to",
+    "title": "Last access time",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "share_types",
+    "side": "to",
+    "title": "Share type",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "to_domains",
+    "side": "to",
+    "title": "Shared with domains",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "to_groups",
+    "side": "to",
+    "title": "Shared with groups",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }]
+}

@@ -1,0 +1,156 @@
+{
+  "options": {
+    "autoUpdate": 60000,
+    "title": "Advanced data search",
+    "checkboxes": false,
+    "highLightNew": false,
+    "viewName": "all",
+    "disableExcluded": true,
+    "showMessageOnFail": true
+  },
+  "columns": [{
+    "id": "entity_id",
+    "hidden": true
+  }, {
+    "id": "subject",
+    "text": "Subject",
+    "href": {
+      "type": "email",
+      "params": {
+        "id": "entity_id"
+      }
+    },
+    "alwaysVisible": true
+  }, {
+    "id": "from_user_name",
+    "hidden": true
+  }, {
+    "id": "from_user_mail",
+    "text": "From",
+    "href": {
+        "type": "user",
+        "params": {
+            "id": "from_user_id"
+        }
+    }
+  }, {
+    "id": "from_user_external",
+    "hidden": true
+  }, {
+    "id": "from_user_id",
+    "hidden": true
+  }, {
+    "id": "sender_user_name",
+    "hidden": true
+  }, {
+    "id": "sender_user_mail",
+    "text": "Sender",
+    "href": {
+        "type": "user",
+        "params": {
+            "id": "sender_user_id"
+        }
+    }
+  }, {
+    "id": "sender_user_external",
+    "hidden": true
+  }, {
+    "id": "sender_user_id",
+    "hidden": true
+  }, {
+    "id": "owner_user_name",
+    "hidden": true
+  }, {
+    "id": "owner_user_mail",
+    "text": "Owner",
+    "href": {
+        "type": "user",
+        "params": {
+            "id": "owner_user_id"
+        }
+    }
+  }, {
+    "id": "owner_user_external",
+    "hidden": true
+  }, {
+    "id": "owner_user_id",
+    "hidden": true
+  }, {
+    "id": "recipients_id",
+    "hidden": true
+  }, {
+    "id": "recipients_name",
+    "text": "Recipients",
+    "converter": "listConverter",
+    "converterArgs": {
+        "type": "user",
+        "ids": "recipients_id",
+        "countPostfix": "recipients"
+    }
+  }, {
+    "id": "attachments_id",
+    "hidden": true
+  }, {
+    "id": "attachments_name",
+    "text": "Attachments",
+    "converter": "listConverter",
+    "converterArgs": {
+        "type": "file",
+        "ids": "attachments_id",
+        "countPostfix": "attachments"
+    }
+  }],
+  "facetBlocks": [{
+    "id": "from_users",
+    "side": "from",
+    "title": "From user",
+    "facetsOperator": false,
+    "defaultOperator": "OR",
+    "queryName": "users_search"
+  }, {
+    "id": "sender_users",
+    "side": "from",
+    "title": "Sender user",
+    "facetsOperator": false,
+    "defaultOperator": "OR",
+    "queryName": "users_search"
+  }, {
+    "id": "owner_users",
+    "side": "from",
+    "title": "Owner user",
+    "facetsOperator": false,
+    "defaultOperator": "OR",
+    "queryName": "users_search"
+  }, {
+    "id": "from_domains",
+    "side": "from",
+    "title": "From domain",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "sender_domains",
+    "side": "from",
+    "title": "Sender domain",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "owner_domains",
+    "side": "from",
+    "title": "Owner domain",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "recipient_users",
+    "side": "to",
+    "title": "Recipient user",
+    "facetsOperator": false,
+    "defaultOperator": "OR",
+    "queryName": "users_search"
+  }, {
+    "id": "recipient_domains",
+    "side": "to",
+    "title": "Recipient domain",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }]
+}

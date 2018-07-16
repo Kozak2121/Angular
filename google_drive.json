@@ -1,0 +1,159 @@
+{
+  "options": {
+    "autoUpdate": 60000,
+    "title": "Advanced data search",
+    "checkboxes": false,
+    "highLightNew": false,
+    "viewName" : "all",
+    "showMessageOnFail": true
+  },
+  "columns": [{
+    "id": "rowPrimaryKey",
+    "hidden": true,
+    "converter": "composition",
+    "converterArgs": {
+      "entity_id": "entity_id",
+      "entity_type": "entity_type"
+    },
+    "primaryKey": true
+  }, {
+    "id": "entity_id",
+    "hidden": true
+  }, {
+    "id": "entity_type",
+    "hidden": true
+  }, {
+    "id": "excludeButton",
+    "text": false,
+    "converter": "clickEventConverter",
+    "converterArgs": {
+      "eventName": "add-to-exclude",
+      "tooltip": "Exclude",
+      "attributes": {
+        "entityId": "entity_id",
+        "entityType": "entity_type",
+        "title": "title",
+        "mimeType": "mimeType"
+      },
+      "class": "fa fa-times blue-times cursor-pointer"
+    },
+    "alwaysVisible": true,
+    "export": {
+      "hidden": true
+    }
+  }, {
+    "id": "mimeType",
+    "text": false,
+    "converter": "mimeIconConverter",
+    "export": {
+      "hidden": true
+    },
+    "dataStyle": {
+      "width": "40px"
+    },
+    "style": {
+      "width": "40px"
+    },
+    "alwaysVisible": true
+  }, {
+    "id": "title",
+    "text": "Title",
+    "converter": "rowPendingLink",
+    "converterArgs": {
+      "typeColumnName": "entity_type",
+      "idColumnName": "entity_id"
+    },
+    "alwaysVisible": true
+  }, {
+    "id": "parent_ids",
+    "hidden": "true"
+  }, {
+    "id": "parent_titles",
+    "text": "Parent directory",
+    "converter": "fileParentsListConverter",
+    "dataClass": "near-click-icon",
+    "converterArgs": {
+      "clickIcon": {
+        "tooltip": "Exclude",
+        "eventName": "add-to-exclude",
+        "iconClass": "fa fa-times cursor-pointer blue-times"
+      }
+    }
+  }, {
+    "id": "owner_id",
+    "hidden": true
+  }, {
+    "id": "fullName",
+    "text": "Owner",
+    "converter": "userWithEmail",
+    "converterArgs": {
+      "userIdColumn": "owner_id",
+      "emailColumn": "primaryEmail"
+    },
+    "alwaysVisible": true
+  }, {
+    "id": "primaryEmail",
+    "hidden": true
+  }],
+  "facetBlocks": [{
+    "id": "data_types",
+    "side": "from",
+    "title": "Data type",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "from_domains",
+    "side": "from",
+    "title": "Owner domain",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "from_departments",
+    "side": "from",
+    "title": "Owner department",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "from_groups",
+    "side": "from",
+    "title": "Owner groups",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "countries_access",
+    "side": "to",
+    "title": "Countries access",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "last_access_time",
+    "side": "to",
+    "title": "Last access time",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "share_types",
+    "side": "to",
+    "title": "Share type",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "to_domains",
+    "side": "to",
+    "title": "Shared with domains",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "to_departments",
+    "side": "to",
+    "title": "Shared with departments",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }, {
+    "id": "to_groups",
+    "side": "to",
+    "title": "Shared with groups",
+    "facetsOperator": false,
+    "defaultOperator": "OR"
+  }]
+}

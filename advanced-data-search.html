@@ -1,0 +1,21 @@
+<div class="advanced-data-search">
+    <div ng-if="displayMode != 1" class="left-column" ng-class="getLeftColumnClass()">
+        <div ng-if="!options.options.disableExcluded" widget-panel="excludedPanel" ng-class="{'options-block-non-empty': !excludedIsEmpty()}">
+            <widget-body>
+                <div ng-if="excludedTableModel" class="avanan-table vertical-middle small-icons" data-table="excludedTableModel" options="excludedTableOptions"></div>
+            </widget-body>
+        </div>
+        <div ng-repeat="block in fromBlocks" search-options-block="model[block.id]" block-options="block" query-params="queryParams" build-params="buildParams(ignore)"></div>
+        <div ng-if="displayMode == 2" ng-repeat="block in toBlocks" search-options-block="model[block.id]" block-options="block" query-params="queryParams" build-params="buildParams(ignore)"></div>
+    </div>
+    <div class="search-column" ng-class="getSearchColumnClass()">
+        <div widget-panel="resultsPanel">
+            <widget-body>
+                <div ng-if="tableModel" class="avanan-table vertical-middle medium-icons" data-table="tableModel" options="tableOptions"></div>
+            </widget-body>
+        </div>
+    </div>
+    <div ng-if="displayMode == 3" class="right-column">
+        <div ng-repeat="block in toBlocks" search-options-block="model[block.id]" block-options="block" query-params="queryParams" build-params="buildParams(ignore)"></div>
+    </div>
+</div>
