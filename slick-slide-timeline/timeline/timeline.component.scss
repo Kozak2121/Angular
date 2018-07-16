@@ -1,0 +1,81 @@
+:host(app-timeline) {
+  height: 50px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1%;
+  button {
+    color: white;
+    border: 0;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    font-size: 13px;
+    padding: 0;
+    background: #cddadf;
+  }
+  .line-wrapper {
+    width: 100%;
+    margin: 0 1%;
+    height: 50px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    .translated {
+      position: relative;
+      
+      .point-wrapper {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        align-items: center;
+        top: -22px;
+        z-index: 1;
+        .point {
+          width: 5px;
+          height: 5px;
+          background: #cddadf;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+        &.selected {
+          top: -26px;
+          .point {
+            width: 15px;
+            height: 15px;
+            background: #49c1ff;
+            border-radius: 50%;
+            border: 2px solid #eff5f8;
+          }
+        }
+       &:hover {
+          top: -26px;
+          .point {
+            width: 15px;
+            height: 15px;
+            background: #f763a1;
+            border-radius: 50%;
+            border: 2px solid #eff5f8;
+          }
+        }
+        .date {
+          min-width: 50px;
+          color: #80a5b4;
+          font-size: 12px;
+        }
+      }
+      transition: all 0.2s linear;
+    }
+   
+    .line {
+      background: #cddadf;
+      height: 2px;
+     
+      min-width: 100vw;
+    }
+  }
+}

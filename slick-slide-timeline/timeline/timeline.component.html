@@ -1,0 +1,17 @@
+<button (click)="changeWeek(-1)"><</button>
+<div #lineWrapper class="line-wrapper">
+    <div #translated class="translated">
+        <div class="point-wrapper"
+            *ngFor="let point of points"
+            [style.left]="point.left" 
+            [ngClass]="{'selected': point.selected}"
+            (click)="changeDay(point)">
+            <span class="date">{{point.date | date:'MMM d'}}</span>
+            <span class="point"></span>
+        </div>
+    </div>
+    <div #line class="line">
+       
+    </div>
+</div>
+<button (click)="changeWeek(1)">></button>
