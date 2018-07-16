@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title"  appTranslate>welcome</h4>
+  <button class="btn btn-default close-modal-btn" (click)="closeModalLogin()"><img src="assets/login/cancel.png">
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" id="loginForm">
+    <div class="form-group"
+         [ngClass]="{ 'has-success': !formErrors.username && loginForm.get('username').dirty, 'has-error': formErrors.username }">
+      <div class="input-group">
+        <span class="input-group-addon"><img src="assets/login/mail.png"></span>
+        <input type="email" class="form-control" formControlName="username" id="username" aria-label="email"
+               placeholder="Email">
+      </div>
+      <span *ngIf="formErrors.username" class="help-block">{{ formErrors.username }}</span>
+    </div>
+    <div class="form-group"
+         [ngClass]="{ 'has-success': !formErrors.password && loginForm.get('password').dirty, 'has-error': formErrors.password }">
+      <div class="input-group">
+        <span class="input-group-addon"><img src="assets/login/lock.png"></span>
+        <input type="password" class="form-control" formControlName="password" id="password" aria-label="password"
+               placeholder="Password">
+      </div>
+      <span *ngIf="formErrors.password" class="help-block">{{ formErrors.password }}</span>
+    </div>
+    <button class="btn btn-default" type="submit" form="loginForm" appTranslate [disabled]="loading">login</button>
+  </form>
+</div>
+<div class="modal-footer">
+  <a (click)="openForgotPasswordModal()" appTranslate>forgot password?</a>
+  <span appTranslate>or</span>
+  <app-facebook-login [disabled]="loading" (login)="closeModalLogin()"></app-facebook-login>
+  <button class="btn btn-grey" (click)="goToRegister()" [disabled]="loading" appTranslate>sign up</button>
+</div>
